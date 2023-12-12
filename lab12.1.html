@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анімація</title>
+    <style>
+        #animatedDiv {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div id="animatedDiv"></div>
+
+<script>
+    // Отримуємо посилання на елемент, який ми хочемо анімувати
+    const animatedDiv = document.getElementById('animatedDiv');
+
+    // Використовуємо метод .animate() для створення анімації
+    animatedDiv.animate(
+        // Властивості, які ми хочемо змінити
+        [
+            { transform: 'translateX(0px)' },
+            { transform: 'translateX(200px)' },
+            { transform: 'translateX(0px)' }
+        ],
+        // Параметри анімації
+        {
+            duration: 2000,    // Тривалість в мілісекундах
+            easing: 'ease-in-out',  // Тип анімаційної функції
+            complete: () => {   // Функція, яка викликається після завершення анімації
+                console.log('Анімація завершена!');
+            },
+            options: {
+                delay: 500,        // Затримка перед початком анімації
+                iterations: 2,     // Кількість повторень (0 для нескінченності)
+                direction: 'alternate'  // Напрямок анімації ('normal', 'reverse', 'alternate', 'alternate-reverse')
+            }
+        }
+    );
+</script>
+
+</body>
+</html>
