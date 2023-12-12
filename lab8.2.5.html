@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Завдання 2.5</title>
+</head>
+<body>
+    <h1>Завдання 2.5. Кількість секунд до початку наступного дня</h1>
+    <button onclick="calculateTimeInfo()">Отримати інформацію</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateTimeInfo() {
+            const timeInfo = getTimeSinceStartAndUntilNextDay();
+            const resultDisplay = document.getElementById("result");
+            resultDisplay.textContent = `Кількість секунд, яка пройшла від початку сьогоднішнього дня: ${timeInfo.secondsSinceStartOfDay} секунд\nКількість секунд до початку наступного дня: ${timeInfo.secondsUntilNextDay} секунд`;
+        }
+
+        function getTimeSinceStartAndUntilNextDay() {
+            const now = new Date();
+            const startOfDay = new Date(now);
+            startOfDay.setHours(0, 0, 0, 0);
+
+            const nextDay = new Date(startOfDay);
+            nextDay.setDate(nextDay.getDate() + 1);
+
+            const secondsSinceStartOfDay = Math.floor((now - startOfDay) / 1000);
+            const secondsUntilNextDay = Math.floor((nextDay - now) / 1000);
+
+            return {
+                secondsSinceStartOfDay: secondsSinceStartOfDay,
+                secondsUntilNextDay: secondsUntilNextDay
+            };
+        }
+    </script>
+    <p><a href="lab8.html"><- Повернутися назад</a></p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Розрахунок суми ряду</title>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>a</th>
+      <td><input type="text" id="a"></td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td><input type="text" id="b"></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><input type="text" id="n"></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><input type="button" value="Розрахувати" onclick="main()"></td>
+    </tr>
+  </table>
+
+  <script>
+    function main() {
+      // Отримати значення змінних a, b і n з таблиці
+      var a = parseFloat(document.getElementById("a").value);
+      var b = parseFloat(document.getElementById("b").value);
+      var n = parseInt(document.getElementById("n").value);
+
+      // Визначити значення суми ряду
+      var S = 0;
+      for (var i = 0; i <= n; i++) {
+        S += (a + i * (b - a) / n) / 2;
+      }
+
+      // Вивести результат
+      document.getElementById("result").innerHTML = "Значення суми ряду: " + S.toFixed(2);
+    }
+  </script>
+
+  <div id="result"></div>
+</body>
+</html>

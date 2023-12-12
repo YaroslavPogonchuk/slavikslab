@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Форма реєстрації</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #registrationForm {
+      width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #ffffff;
+    }
+    label {
+      display: block;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 10px 0;
+      color: #333333;
+      font-size: 22px;
+    }
+    #buttonContainer {
+      margin-top: 20px;
+    }
+    h1 {
+      font-family: 'Courier New', Courier, monospace;
+      color: #333333;
+    }
+    input {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #ffffff;
+      color: #333333;
+      border: 2px solid #333333;
+    }
+    #result {
+      font-family: 'Courier New', Courier, monospace;
+      color: #333333;
+    }
+    #successIcon {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Форма реєстрації</h1>
+
+<form id="registrationForm">
+  <label for="email">Адреса електронної пошти (e-mail):</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="name">Ім'я та прізвище:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="login">Логін:</label>
+  <input type="text" id="login" name="login" required>
+
+  <label for="password">Пароль:</label>
+  <input type="password" id="password" name="password" required>
+
+  <label for="postcode">Поштовий індекс:</label>
+  <input type="text" id="postcode" name="postcode" required>
+</form>
+
+<div id="buttonContainer">
+  <input type="button" value="Перевірити дані" onclick="checkData()">
+</div>
+
+<div id="result"></div>
+<div id="successIcon" style="display: none;">
+  <img src="success.png" alt="Усі дані введено коректно" width="256" height="256">
+</div>
+
+<script>
+function checkData() {
+  const fields = {
+    email: document.getElementById("email"),
+    name: document.getElementById("name"),
+    login: document.getElementById("login"),
+    password: document.getElementById("password"),
+    postcode: document.getElementById("postcode"),
+  };
+  
+  const patterns = {
+    email: /^[a-zA-Z0-9._-]+@pnu.edu.ua$/,
+    name: /^([A-Za-zА-ЯЁа-яёҐЄІЇґєії]*)\s([A-ZА-ЯЁа-яёҐЄІЇґєії]*)<span class="math-inline">/,
+login\: /^\[a\-zA\-Z\]\+</span>/,
+    password: /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-!@#<span class="math-inline">%^&\*\]\)\.\{8,\}</span>/,
+    postcode: /^\d{5}$/,
+  };
+  
+  const result = document.getElementById("result");
+  let valid = true;
+  
+  for (const field in fields) {

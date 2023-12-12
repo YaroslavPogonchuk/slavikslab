@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Континенти</title>
+</head>
+<body>
+  <h1>Континенти</h1>
+
+  <form name="entryForm">
+    <label for="entry">Введіть назву континенту:</label>
+    <input type="text" id="entry" name="entry" />
+    <input type="button" value="Густина і площа" onclick="fun1()" />
+    <input type="button" value="Населення" onclick="fun2()" />
+  </form>
+
+  <div id="output"></div>
+
+  <script>
+    let continents = ["Євразія", "Африка", "Північна Америка", "Південна Америка", "Австралія", "Антарктида"];
+    let densities = ["37,5", "40,8", "33,2", "17,5", "2,9", "0,02"];
+    let areas = ["10,54 млн км²", "30,37 млн км²", "24,70 млн км²", "17,84 млн км²", "7,69 млн км²", "14,2 млн км²"];
+
+    function fun1() {
+      let continent = document.getElementById("entry").value;
+      let index = continents.indexOf(continent);
+
+      if (index !== -1) {
+        document.getElementById("output").innerHTML = `Густина населення: ${densities[index]} осіб/км²
+Площа: ${areas[index]} км²`;
+      } else {
+        document.getElementById("output").innerHTML = "Континенту з такою назвою не існує";
+      }
+    }
+
+    function fun2() {
+      let continent = document.getElementById("entry").value;
+      let index = continents.indexOf(continent);
+
+      if (index !== -1) {
+        document.getElementById("output").innerHTML = `Населення: ${densities[index] * areas[index]} осіб`;
+      } else {
+        document.getElementById("output").innerHTML = "Континенту з такою назвою не існує";
+      }
+    }
+  </script>
+</body>
+</html>

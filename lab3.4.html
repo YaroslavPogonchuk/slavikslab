@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<img id="currentImage" src="" style="height: 300px"><br>
+
+<button onclick="Previous()">Back</button>
+<button onclick="Next()">Next</button>
+
+<script>
+    const Photo_url = "slides/"
+    const slides = ['1.png', '2.jpg', '3.png', '4.png'];
+    let currentIndex = 0;
+    let currentImage = document.getElementById('currentImage');
+
+    function showImage() {
+        const imageUrl = slides[currentIndex];
+        currentImage.src = Photo_url + imageUrl;
+    }
+
+    function Previous() {
+        currentIndex--;
+        if (currentIndex < 0) {
+            currentIndex = slides.length - 1;
+        }
+        showImage();
+    }
+
+    function Next() {
+        currentIndex++;
+        if (currentIndex >= slides.length) {
+            currentIndex = 0;
+        }
+        showImage();
+    }
+
+    showImage();
+</script>
+<li><a href="lab3.html">Повернутися  <- </a></li>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна робота 7 - Завдання 3.3</title>
+</head>
+<body>
+    <h1>Завдання 3.3</h1>
+    <p><strong>Заміна всіх дат у форматі "yyyy/mm/dd" на формат "dd.mm.yyyy" за допомогою регулярних виразів.</strong></p>
+
+    <p>Введіть текст з датами: <textarea id="textInput" rows="5" cols="40"></textarea></p>
+    <button onclick="replaceDatesAndDisplay()">Замінити</button>
+
+    <p>Результат: <div id="outputText"></div></p>
+
+    <script>
+       function replaceDates(inputText) {
+    const regex = /(\d{4})\/(\d{2})\/(\d{2})/gim;
+    return inputText.replace(regex, '$3.$2.$1');
+}
+        function replaceDatesAndDisplay() {
+            const inputText = document.getElementById('textInput').value;
+            const resultText = replaceDates(inputText);
+            document.getElementById('outputText').textContent = resultText;
+        }
+    </script>
+    <li><a href="lab7.html">Повернутися  <- </a></li>
+</body>
+</html>

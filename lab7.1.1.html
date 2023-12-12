@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна робота 7</title>
+</head>
+<body>
+    <h1>Завдання 1.1</h1>
+    <p><strong>Функція, що обертає введене число та виводить результат за допомогою .split()</strong></p>
+
+    <p>Введіть число: <input type="number" id="numberInput"></p>
+    <button onclick="reverseAndDisplay()">Обернути та вивести</button>
+
+    <p>Результат: <span id="result"></span></p>
+
+    <!-- Обернення числа та видалення нулів-->
+    <script>
+        function reverseNumber(inputNumber) {
+    const reversedNumber = parseInt(inputNumber.toString().split('').reverse().join(''));
+    return reversedNumber;
+}
+
+function reverseAndDisplay() {
+    const inputNumber = document.getElementById('numberInput').value;
+    const reversedNumber = reverseNumber(inputNumber);
+    const formattedReversedNumber = reversedNumber.toString().padStart(inputNumber.length, '0');
+    document.getElementById('result').textContent = formattedReversedNumber;
+}
+
+    </script>
+    <li><a href="lab7.html">Повернутися  <- </a></li>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна робота 7</title>
+</head>
+<body>
+    <h1>Завдання 1.2</h1>
+    <p><strong>Функція, що видаляє нульові значення з масиву чисел за допомогою .replace()</strong></p>
+
+    <p>Введіть числа через кому (приклад: 1, 0, 2, 0, 3): <input type="text" id="arrayInput"></p>
+    <button onclick="removeZerosAndDisplay()">Видалити нулі</button>
+
+    <p>Результат: <span id="result"></span></p>
+
+    <script>
+        function removeZeros(inputString) {
+            return inputString.replace(/(^|,)(\s*0\s*)/g, ',');
+        }
+
+        function removeZerosAndDisplay() {
+            const inputString = document.getElementById('arrayInput').value;
+            const modifiedString = removeZeros(inputString);
+            document.getElementById('result').textContent = modifiedString;
+        }
+    </script>
+    <li><a href="lab7.html">Повернутися  <- </a></li>
+</body>
+</html>

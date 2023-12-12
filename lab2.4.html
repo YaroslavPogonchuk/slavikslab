@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Вивід в консоль</title>
+</head>
+<body>
+  <script>
+    // Вивід остачі від ділення
+    let num1 = 50;
+    let num2 = 6;
+    let remainder = num1 % num2;
+    console.log(`Остача від ділення ${num1} на ${num2} дорівнює ${remainder}`);
+
+    // Вивід логічного значення (true/false) перевірки рівності нулю остачі
+    let num3 = 20;
+    let num4 = 3;
+    let isZeroRemainder = num3 % num4 === 0;
+    console.log(`Остача від ділення ${num3} на ${num4} дорівнює нулю: ${isZeroRemainder}`);
+
+    // Комбінований вивід тексту і значень масиву з використанням керуючих послідовностей %2, %d, %s
+    let fruits = ["Processor The AMD Ryzen 5600H", "Kingston Fury DDR4-3200 16384 MB PC4-25600", "SSDNow A400 480GB 2.5 (SATAIII 3D V-NAND SA400S37/480G)"];
+    console.log(`Computer components: ${fruits}`);
+    console.log("Computer components:");
+    for (let i = 0; i < fruits.length; i++) {
+      console.log(`[%d] %s`, i + 1, fruits[i]);
+    }
+  </script>
+  <li><a href="lab2.html">Повернутися  <- </a></li>
+</body>
+</html>

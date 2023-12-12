@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна робота 7 </title>
+</head>
+<body>
+    <h1>Завдання 2.2</h1>
+    <p><strong>Функція, яка знаходить індекси та кількість входжень символу у рядок.</strong></p>
+
+    <p>Рядок: <input type="text" id="textInput"></p>
+    <p>Символ: <input type="text" id="charInput"></p>
+    <button onclick="findCharacter()">Знайти</button>
+
+    <p>Індекси: <span id="indexes"></span></p>
+    <p>Кількість входжень: <span id="count"></span></p>
+
+    <script>
+        function findCharacter() {
+            const text = document.getElementById('textInput').value;
+            const char = document.getElementById('charInput').value;
+            const indexes = [];
+            let count = 0;
+
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] === char) {
+                    indexes.push(i);
+                    count++;
+                }
+            }
+
+            document.getElementById('indexes').textContent = indexes.join(', ');
+            document.getElementById('count').textContent = count;
+        }
+    </script>
+    <li><a href="lab7.html">Повернутися  <- </a></li>
+</body>
+</html>

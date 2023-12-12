@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        ul {
+            list-style-type: none;
+        }
+        .closed {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>
+        <a onclick="toggleBranch(this)">fruits</a>
+        <ul class="closed">
+            <li>apple;</li>
+            <li>pineapple;</li>
+            <li>appricot;</li>
+            <li>pear;</li>
+            <li>lemon;</li>
+        </ul>
+    </li>
+    <li>
+        <a onclick="toggleBranch(this)">vegetables</a>
+        <ul class="closed">
+            <li>potatoes;</li>
+            <li>beetroot;</li>
+            <li>carrots;</li>
+            <li>pear;</li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    function toggleBranch(element) {
+        var branch = element.nextElementSibling;
+        if (branch.style.display === "none") {
+            branch.style.display = "block";
+        } else {
+            branch.style.display = "none";
+        }
+    }
+</script>
+<li><a href="lab3.html">Повернутися  <- </a></li>
+</body>

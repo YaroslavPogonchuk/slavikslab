@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Завдання 2.6</title>
+</head>
+<body>
+    <h1>Завдання 2.6. Форматування дати та часу</h1>
+    <label for="dateTimeInput">Введіть дату та час (дд.мм.р год:хв): </label>
+    <input type="text" id="dateTimeInput">
+    <button onclick="formatDateDifference()">Форматувати</button>
+    <p id="result"></p>
+
+    <script>
+        function formatDateDifference() {
+            const dateTimeInput = document.getElementById("dateTimeInput").value;
+            const resultDisplay = document.getElementById("result");
+
+           
+            const parts = dateTimeInput.split(' ');
+
+          
+            const dateParts = parts[0].split('.');
+            const timeParts = parts[1].split(':');
+
+            // Перетворюємо рядок у форматі "дд.мм.р" у об'єкт Date
+            const inputDate = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}T${timeParts[0]}:${timeParts[1]}`);
+
+           
+            const now = new Date();
+
+            
+            const differenceInSeconds = Math.floor((now - inputDate) / 1000);
+
+            
+            if (differenceInSeconds < 60) {
+                resultDisplay.textContent = `${differenceInSeconds} сек. назад`;
+            } else if (differenceInSeconds < 3600) {
+                const minutes = Math.floor(differenceInSeconds / 60);
+                resultDisplay.textContent = `${minutes} хв. назад`;
+            } else {
+                resultDisplay.textContent = inputDate.toLocaleString();
+            }
+        }
+    </script>
+    <p><a href="lab8.html"><- Повернутися назад</a></p>
+</body>
+</html>

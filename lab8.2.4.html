@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Завдання 2.4</title>
+</head>
+<body>
+    <h1>Завдання 2.4. Визначення останнього дня місяця</h1>
+    <label for="yearInput">Введіть рік: </label>
+    <input type="number" id="yearInput">
+    <label for="monthInput">Введіть номер місяця (1 - січень, 2 - лютий, ..., 12 - грудень): </label>
+    <input type="number" id="monthInput">
+    <button onclick="findLastDayOfMonth()">Знайти останній день місяця</button>
+    <p id="result"></p>
+
+    <script>
+        function findLastDayOfMonth() {
+            const yearInput = parseInt(document.getElementById("yearInput").value);
+            const monthInput = parseInt(document.getElementById("monthInput").value);
+            const resultDisplay = document.getElementById("result");
+
+            if (!isNaN(yearInput) && !isNaN(monthInput) && monthInput >= 1 && monthInput <= 12) {
+                const lastDayInfo = getLastDayOfMonth(yearInput, monthInput - 1); 
+                resultDisplay.textContent = `Останній день місяця: ${lastDayInfo.day} (${lastDayInfo.dayName})`;
+            } else {
+                resultDisplay.textContent = "Некоректні значення року або номера місяця.";
+            }
+        }
+
+        function getLastDayOfMonth(year, month) {
+            const nextMonthFirstDay = new Date(year, month + 1, 1);
+            const lastDay = new Date(nextMonthFirstDay - 1);
+            
+            const dayNumber = lastDay.getDay(); 
+            const daysOfWeek = ["неділя", "понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота"];
+            
+            return {
+                day: lastDay.getDate(),
+                dayName: daysOfWeek[dayNumber]
+            };
+        }
+    </script>
+    <p><a href="lab8.html"><- Повернутися назад</a></p>
+</body>
+</html>

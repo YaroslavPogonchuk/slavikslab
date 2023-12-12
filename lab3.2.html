@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #keyboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #clear-button {
+            width: 120px; 
+            height: 60px; 
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <textarea id="textInput" rows="5" cols="40"></textarea><br><br>
+
+    <div id="keyboard">
+        <script>
+            const alphabet = [
+                ["а", "б", "в", "г", "ґ", "д", "е", "є", "ж", "з"],
+                ["и", "і", "ї", "й", "к", "л", "м", "н", "о", "п"],
+                ["р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ"],
+                ["ь","ю","я"],
+               ];
+
+            alphabet.forEach(row => {
+                const rowDiv = document.createElement("div");
+                rowDiv.classList.add("keyboard-row");
+
+                row.forEach(letter => {
+                    const button = document.createElement("button");
+                    button.textContent = letter;
+                    button.style.width = "60px";
+                    button.style.height = "60px";
+                    button.onclick = () => addToTextField(letter);
+                    rowDiv.appendChild(button);
+                });
+
+                keyboard.appendChild(rowDiv);
+            });
+
+            function addToTextField(letter) {
+                const textField = document.getElementById("textInput");
+                textField.value += letter;
+            }
+
+            function clearTextField() {
+                const textField = document.getElementById("textInput");
+                textField.value = "";
+            }
+        </script>
+    </div>
+
+    <button id="clear-button" onclick="clearTextField()">Clear</button>
+</div>
+
+<style>
+    .keyboard-row {
+        display: flex;
+    }
+</style>
+<li><a href="lab3.html">Повернутися  <- </a></li>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна робота 7</title>
+</head>
+<body>
+    <h1>Завдання 3.2</h1>
+    <p><strong>Функція, яка перетворює ім'я змінної зі стилю "Lower camel case" в "Snake case" та виводить вхідний і вихідний масиви.</strong></p>
+
+    <p>Вхідний масив (Lower camel case): <input type="text" id="inputArray"></p>
+    <button onclick="toSnakeCaseAndDisplay()">Перетворити</button>
+
+    <p>Вихідний масив (Snake case): <span id="outputArray"></span></p>
+
+    <script>
+        function toSnakeCase(camelCase) {
+            const snakeCase = camelCase.replace(/([A-Z])/g, '_$1').toLowerCase();
+            if (snakeCase.startsWith('_')) {
+                return snakeCase.substring(1);
+            }
+            return snakeCase;
+        }
+
+        function toSnakeCaseAndDisplay() {
+            const camelCase = document.getElementById('inputArray').value;
+            const snakeCase = toSnakeCase(camelCase);
+            document.getElementById('outputArray').textContent = snakeCase;
+        }
+    </script>
+    <li><a href="lab7.html">Повернутися  <- </a></li>
+</body>
+</html>

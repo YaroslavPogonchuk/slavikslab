@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Розгалужений обчислювальний процес</title>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>x</th>
+      <td><input type="text" id="x"></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><input type="text" id="y"></td>
+    </tr>
+    <tr>
+      <th>p</th>
+      <td><input type="text" id="p"></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><input type="button" value="Розрахувати" onclick="main()"></td>
+    </tr>
+  </table>
+
+  <script>
+    function main() {
+      // Отримати значення змінних x і y з таблиці
+      var x = parseFloat(document.getElementById("x").value);
+      var y = parseFloat(document.getElementById("y").value);
+      var p = parseFloat(document.getElementById("p").value);
+
+      // Визначити значення функції F
+      var F;
+      if (y > 0) {
+        if (x < 3) {
+          F = 2 * x + y;
+        } else {
+          F = x * x + 2 * y;
+        }
+      } else {
+        F = x * x * x;
+      }
+
+      // Вивести результат
+      document.getElementById("result").innerHTML = "Значення функції F: " + F;
+    }
+  </script>
+
+  <div id="result"></div>
+</body>
+</html>

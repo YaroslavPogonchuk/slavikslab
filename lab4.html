@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тестування</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            margin-bottom: 5px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript">
+        function calculateScore() {
+            let totalScore = 0;
+
+            // Питання 1: радіокнопки
+            const radioOptions0 = document.getElementsByName('radio0');
+            let radio0Score = 0;
+            for (let i = 0; i < radioOptions0.length; i++) {
+                if (radioOptions0[i].type === 'radio' && radioOptions0[i].checked) {
+                    radio0Score = parseFloat(radioOptions0[i].value);
+                    break;
+                }
+            }
+            totalScore += radio0Score;
+            document.getElementById('rezultatRadio0').innerHTML = radio0Score === 1 ? '1' : '0';
+
+            // Питання 2: радіокнопки
+            const radioOptions1 = document.getElementsByName('radio1');
+            let radio1Score = 0;
+            for (let i = 0; i < radioOptions1.length; i++) {
+                if (radioOptions1[i].type === 'radio' && radioOptions1[i].checked) {
+                    radio1Score = parseFloat(radioOptions1[i].value);
+                    break;
+                }
+            }
+            totalScore += radio1Score;
+            document.getElementById('rezultatRadio1').innerHTML = radio1Score === 1 ? '1' : '0';
+
+            // Питання 3: прапорці
+            const checkboxOptions0 = document.getElementsByName('checkbox0');
+            let selectedCheckboxCount0 = 0;
+            let correctCheckboxCount0 = 0;
+            for (let i = 0; i < checkboxOptions0.length; i++) {
+                if (checkboxOptions0[i].type === 'checkbox' && checkboxOptions0[i].checked) {
+                    selectedCheckboxCount0++;
+                    if (checkboxOptions0[i].value === 'correct') {
+                        correctCheckboxCount0++;
+                    }
+                }
+            }
+            if (correctCheckboxCount0 === 2) {
+                totalScore += 2;
+            } else if (correctCheckboxCount0 === 1) {
+                totalScore += 1;
+            }
+            document.getElementById('rezultatCheckbox0').innerHTML = correctCheckboxCount0 === 2 ? '2' : correctCheckboxCount0 === 1 ? '1' : '0';
+
+            // Питання 4: прапорці
+            const checkboxOptions1 = document.getElementsByName('checkbox1');
+            let selectedCheckboxCount1 = 0;
+            let correctCheckboxCount1 = 0;
+            for (let i = 0; i < checkboxOptions1.length; i++) {
+                if (checkboxOptions1[i].type === 'checkbox' && checkboxOptions1[i].checked) {
+                    selectedCheckboxCount1++;
+                    if (checkboxOptions1[i].value === 'correct') {
+                        correctCheckboxCount1++;
+                    }
+                }
+            }
+            if (correctCheckboxCount1 === 2) {
+                totalScore += 2;
+            } else if (correctCheckboxCount1 === 1) {
+                totalScore += 1;
+            }
+            document.getElementById('rezultatCheckbox1').innerHTML = correctCheckboxCount1 === 2 ? '2' : correctCheckboxCount1 === 1 ? '1' : '0';
+
+            // Питання 5: списки множинного вибору
+            const multiselectOptions0 = document.getElementsByName('multiselect0')[0];
+            let selectedMultiselectCount0 = 0;
+            let correctMultiselectCount0 = 0;
+            for (let i = 0; i < multiselectOptions0.options.length; i++) {
+                if (multiselectOptions0.options[i].selected) {
+                    selectedMultiselectCount0++;
+                    if (multiselectOptions0.options[i].value === 'correct') {
+                        correctMultiselectCount0++;
+                    }
+                }
+            }
+            if (correctMultiselectCount0 === 2) {
+                totalScore += 2;
+            } else if (correctMultiselectCount0 === 1) {
+                totalScore += 1;
+            }
+            document.getElementById('rezultatMultiselect0').innerHTML = correctMultiselectCount0 === 2 ? '2' : correctMultiselectCount0 === 1 ? '1' : '0';
+
+            // Питання 6: списки множинного вибору
+            const multiselectOptions1 = document.getElementsByName('multiselect1')[0];
+            let selectedMultiselectCount1 = 0;
+            let correctMultiselectCount1 = 0;
+            for (let i = 0; i < multiselectOptions1.options.length; i++) {
+                if (multiselectOptions1.options[i].selected) {
+                    selectedMultiselectCount1++;
+                    if (multiselectOptions1.options[i].value === 'correct') {
+                        correctMultiselectCount1++;
+                    }
+                }
+            }
+            if (correctMultiselectCount1 === 2) {
+                totalScore += 2;
+            } else if (correctMultiselectCount1 === 1) {
+                totalScore += 1;
+            }
+            document.getElementById('rezultatMultiselect1').innerHTML = correctMultiselectCount1 === 2 ? '2' : correctMultiselectCount1 === 1 ? '1' : '0';
+
+            // Питання 7: введення речення
+            const sentenceAnswer0 = document.getElementsByName('sentence0')[0].value.trim();
+            if (sentenceAnswer0.toLowerCase() === 'apple') {
+                totalScore += 1;
+                document.getElementById('rezultatSentence0').innerHTML = '1';
+            } else {
+                document.getElementById('rezultatSentence0').innerHTML = '0';
+            }
+
+            // Виведіть загальний бал
+            document.getElementById('totalScore').innerHTML = 'Загальний бал: ' + totalScore;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <!-- Питання 1: радіокнопки -->
+        <p>1. Як називається столиця Франції?</p>
+        <input type="radio" name='radio0' value='0'> Мадрид
+        <input type="radio" name='radio0' value='0'> Рим
+        <input type="radio" name='radio0' value='1'> Париж
+        <input type="radio" name='radio0' value='0'> Берлін
+        <p>Результат: <span id='rezultatRadio0'></span></p>
+
+        <!-- Питання 2: радіокнопки -->
+        <p>2. Скільки планет в Сонячній системі?</p>
+        <input type="radio" name='radio1' value='1'> 8
+        <input type="radio" name='radio1' value='0'> 9
+        <input type="radio" name='radio1' value='0'> 7
+        <input type="radio" name='radio1' value='0'> 6
+        <p>Результат: <span id='rezultatRadio1'></span></p>
+
+        <!-- Питання 3: прапорці -->
+        <p>3. Які з наведених кольорів є теплими? (Оберіть 2 або більше відповіді):</p>
+        <input type='checkbox' name='checkbox0' value='correct'> Червоний
+        <input type='checkbox' name='checkbox0' value='correct'> Жовтий
+        <input type='checkbox' name='checkbox0' value='incorrect'> Синій
+        <input type='checkbox' name='checkbox0' value='incorrect'> Зелений
+        <p>Результат: <span id='rezultatCheckbox0'></span></p>
+
+        <!-- Питання 4: прапорці -->
+        <p>4. Які з наведених мов програмування є об'єктно-орієнтованими? (Оберіть 2 або більше відповіді):</p>
+        <input type='checkbox' name='checkbox1' value='correct'> Java
+        <input type='checkbox' name='checkbox1' value='correct'> Python
+        <input type='checkbox' name='checkbox1' value='incorrect'> C
+        <input type='checkbox' name='checkbox1' value='incorrect'> Assembly
+        <p>Результат: <span id='rezultatCheckbox1'></span></p>
+
+        <!-- Питання 5: списки множинного вибору -->
+        <p>5. Які з наведених країн є членами Європейського союзу? (Оберіть 2 або більше відповіді):</p>
+        <select name='multiselect0' multiple>
+            <option value='correct'> Франція
+            <option value='correct'> Німеччина
+            <option value='incorrect'> Японія
+            <option value='incorrect'> Канада
+        </select>
+        <p>Результат: <span id='rezultatMultiselect0'></span></p>
+
+        <!-- Питання 6: списки множинного вибору -->
+        <p>6. Які з наведених океанів є найдовшими? (Оберіть 2 або більше відповіді):</p>
+        <select name='multiselect1' multiple>
+            <option value='correct'> Тихий
+            <option value='correct'> Атлантичний
+            <option value='incorrect'> Індійський
+            <option value='incorrect'> Північний Льодовитий
+        </select>
+        <p>Результат: <span id='rezultatMultiselect1'></span></p>
+
+        <!-- Питання 7: введення речення -->
+        <p>7. Яка країна є найбільшою за площею у світі?</p>
+        <input type='text' name='sentence0'>
+        <p>Результат: <span id='rezultatSentence0'></span></p>
+
+        <input type='button' value='Підрахувати бали' onclick='calculateScore()'>
+        <div id='totalScore'></div>
+    </form>
+</body>
+</html>
+
+
+

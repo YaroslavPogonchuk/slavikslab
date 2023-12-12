@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна робота 7 </title>
+</head>
+<body>
+    <h1>Завдання 2.1</h1>
+    <p><strong>Функція, яка порівнює довжину двох рядків та повертає 1, -1 або 0.</strong></p>
+
+    <p>Рядок 1: <input type="text" id="string1Input"></p>
+    <p>Рядок 2: <input type="text" id="string2Input"></p>
+    <button onclick="compareAndDisplay()">Порівняти</button>
+
+    <p>Результат: <span id="result"></span></p>
+
+    <script>
+        function compareStringsLength(str1, str2) {
+            if (str1.length > str2.length) {
+                return 1;
+            } else if (str1.length < str2.length) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+
+        function compareAndDisplay() {
+            const string1 = document.getElementById('string1Input').value;
+            const string2 = document.getElementById('string2Input').value;
+            const result = compareStringsLength(string1, string2);
+            document.getElementById('result').textContent = result;
+        }
+    </script>
+    <li><a href="lab7.html">Повернутися  <- </a></li>
+</body>
+</html>

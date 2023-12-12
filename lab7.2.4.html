@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна робота 7 </title>
+</head>
+<body>
+    <h1>Завдання 2.4</h1>
+    <p><strong>Функція, яка підраховує кількість голосних літер у рядку.</strong></p>
+
+    <p>Рядок: <input type="text" id="textInput"></p>
+    <button onclick="countAndDisplay()">Підрахувати голосні</button>
+
+    <p>Кількість голосних: <span id="count"></span></p>
+
+    <script>
+        function countVowels(text) {
+            const vowels = 'AEIOUaeiou';
+            let count = 0;
+            for (let i = 0; i < text.length; i++) {
+                if (vowels.includes(text[i])) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        function countAndDisplay() {
+            const text = document.getElementById('textInput').value;
+            const vowelCount = countVowels(text);
+            document.getElementById('count').textContent = vowelCount;
+        }
+    </script>
+    <li><a href="lab7.html">Повернутися  <- </a></li>
+</body>
+</html>

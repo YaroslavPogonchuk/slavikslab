@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Методи console</title>
+</head>
+<body>
+  <script>
+ 
+    console.info("Ця функція просто виводить повідомлення.");
+
+    
+    console.warn("Ця функція виводить попередження.");
+
+    // console.error()
+    console.error("Ця функція виводить повідомлення про помилку.");
+
+// Функція console.dir(obj) виводить вміст об'єкта obj в консолі розробника браузера у вигляді інтерактивної структури даних
+    const obj = { 
+        name: "Oleksandr", 
+        surname: "Ryzhkin",
+        age: 18 };
+    console.dir(obj);
+
+      // Функція яка виводить DOM-елемент element у вигляді XML або HTML структури у консолі розробника браузера.
+    const element = document.getElementById("myElement");
+    console.dirxml(element);
+ 
+    // console.time() і console.timeEnd() Ця функція вимірює час виконання певної операції 
+   // Вимірювання часу виконання
+console.time("myTimer");
+
+for (let i = 0; i < 1000000; i++) {
+  Math.sqrt(i);
+}
+
+console.timeEnd("myTimer");
+
+// Початок профілювання
+console.profile("myProfile");
+
+for (let i = 0; i < 1000000; i++) {
+  Math.sqrt(i);
+}
+
+// Завершення профілювання
+console.profileEnd("myProfile");
+
+
+    // console.assert() Функція для перевірки певної умови та виводу повідомлення про помилку, якщо умова не виконується.
+    console.assert(3 + 2 === 6, "Помилка: 3 + 2 не дорівнює 6.");
+  </script>
+ <li><a href="lab2.html">Повернутися  <- </a></li>
+</body>
+</html>
