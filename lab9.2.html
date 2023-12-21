@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Лабораторна 9(4 Приклади анімації)</title>
+  <style>
+    .train-container {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .train {
+      position: relative;
+      left: 0;
+      width: 100px; /* Додайте ширину зображення для кращої видимості */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="train-container">
+    <img src="logotype.png.jpg" class="train">
+  </div>
+
+  <div class="train-container">
+    <img src="logotype.png.jpg" class="train">
+  </div>
+
+  <div class="train-container">
+    <img src="logotype.png.jpg" class="train">
+  </div>
+
+  <div class="train-container">
+    <img src="logotype.png.jpg" class="train">
+  </div>
+
+  <script>
+    function animateTrain(trainElement, timingFunction) {
+      let start = Date.now();
+
+      let timer = setInterval(function() {
+        let timePassed = Date.now() - start;
+        let progress = timePassed / 2000;
+
+        trainElement.style.left = timingFunction(progress) * 200 + 'px';
+
+        if (timePassed > 2000) clearInterval(timer);
+
+      }, 20);
+    }
+
+    const trainElements = document.querySelectorAll('.train');
+
+    trainElements.forEach((train, index) => {
+      let timingFunction;
+      if (index === 0) {
+        timingFunction = linear;
+      } else if (index === 1) {
+        timingFunction = quad;
+      } else if (index === 2) {
+        timingFunction = back;
+      } else {
+        timingFunction = bounce;
+      }
+
+      train.onclick = function() {
+        animateTrain(train, timingFunction);
+      };
+    });
+
+    function linear(timeFraction) {
+      return timeFraction;
+    }
+
+    function quad(timeFraction) {
+      return Math.pow(timeFraction, 2);
+    }
+
+    function back(timeFraction) {
+      return Math.pow(timeFraction, 2) * ((1 + 1) * timeFraction - 1);
+    }
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1; 1; a += b, b /= 2) {
+        if (timeFraction >= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+  </script>
+<p><a href="lab9.html"><- Повернутися назад</a></p>
+</body>
+
+</html>

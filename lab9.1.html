@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна 9(Логотип)</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            margin: 5px;
+        }
+        p {
+            font-size: 30px;
+           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: inline;
+        }
+        .link{
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <img id="box" src="logotype.png.jpg" style="display: none;"> <!-- По замовчуванню логотип прихований -->
+    <p id="logoText" style="display: none;"></p> <!-- По замовчуванню текст також прихований -->
+    
+     <!--<div class="button-container"> <button id="fadeInButton">Fade In</button>  <button id="fadeOutButton">Fade Out</button> </div> -->
+           
+
+    <script>
+        $(document).ready(function() {
+            // Функція для автоматичного відображення і зникнення логотипу
+            function autoAnimate() {
+                $("#box, #logoText").fadeIn(1000, function() {
+                    animateText();
+                    setTimeout(function() {
+                        $("#logoText, #box").fadeOut(1000);
+                    }, 2500); // Зникає через 2 секунди
+                });
+            }
+
+            // Виклик функції при завантаженні сторінки
+            autoAnimate();
+
+            function animateText() {
+                var text = "IPZ-23";
+                var currentChar = 0;
+                var textElement = $("#logoText");
+
+                var animationInterval = setInterval(function() {
+                    if (currentChar < text.length) {
+                        textElement.text(text.substring(0, currentChar + 1));
+                        currentChar++;
+                    } else {
+                        clearInterval(animationInterval);
+                    }
+                }, 250);
+            }
+
+            // Метод .fadeIn()
+            $("#fadeInButton").click(function() {
+                autoAnimate(); // Викликаємо автоматичну анімацію знову при кліку на кнопку "Fade In"
+            });
+
+            // Метод .fadeOut()
+            $("#fadeOutButton").click(function() {
+                // Плавно зникаємо текст та логотип
+                $("#logoText, #box").fadeOut(1000);
+            });
+        });
+    </script>
+    <p><a href="lab9.html" class="link"><- Повернутися назад</a></p>
+</body>
+</html>
