@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Завдання 1</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="myDiv">Початковий текст</div>
+    <br>
+
+    <input type="text" id="myInput" value="Початкове значення">
+    <br>
+
+    <a href="https://www.example.com" id="myLink">Посилання</a>
+
+    <script>
+        $(document).ready(function() {
+            // Змінити HTML вміст елементу
+            $("#myDiv").html("Новий текст");
+            
+            // Отримати HTML вміст елементу
+            var content = $("#myDiv").html();
+            alert(content);
+
+            // Змінити CSS властивість кольору тексту
+            $("#myDiv").css("color", "red");
+            
+            // Отримати значення CSS властивості кольору тексту
+            var color = $("#myDiv").css("color");
+            alert("Колір тексту: " + color);
+
+            // Змінити значення введення форми
+            $("#myInput").val("Нове значення");
+            
+            // Отримати значення введення форми
+            var value = $("#myInput").val();
+            alert("Значення введення: " + value);
+
+            // Змінити значення атрибуту href посилання
+            $("#myLink").attr("href", "https://www.newlink.com");
+            
+            // Отримати значення атрибуту href посилання
+            var link = $("#myLink").attr("href");
+            alert("Посилання: " + link);
+
+            // Видалити атрибут href посилання
+            $("#myLink").removeAttr("href");
+        });
+    </script>
+    <p><a href="lab11.html"><- Повернутися назад</a></p>
+</body>
+</html>

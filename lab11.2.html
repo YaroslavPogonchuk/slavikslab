@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Завдання 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="originalDiv">Початковий текст </div>
+    <div id="cloneDiv"> </div>
+    <div id="widthDiv">Ширина: 100 пікселів</div>
+    <div id="outerWidthDiv" style="width: 200px; padding: 10px; border: 1px solid black;">Зовнішня ширина</div>
+
+    <script>
+        $(document).ready(function() {
+            // Завдання 2 - Методи .append(), .clone(), .width(функція), .outerWidth()
+            
+            // Додати текст до div
+            $("#originalDiv").append(" Додатковий текст");
+
+            // Створити копію div і додати її до cloneDiv
+            var original = $("#originalDiv");
+            var cloned = original.clone();
+            $("#cloneDiv").append(cloned);
+
+            // Встановити ширину div на 100 пікселів
+            $("#widthDiv").width(function(index, currentWidth) {
+                return currentWidth + 100;
+            });
+
+            // Отримати зовнішню ширину
+            var outerWidth = $("#outerWidthDiv").outerWidth();
+            alert("Зовнішня ширина div: " + outerWidth + " пікселів");
+        });
+    </script>
+    <p><a href="lab11.html"><- Повернутися назад</a></p>
+</body>
+</html>
