@@ -1,40 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Завдання 7</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <title>jQuery Methods Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        #element {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div id="box" style="width: 200px; height: 200px; background-color: rgb(174, 255, 0);"></div>
-    <button id="fadeInButton">Fade In</button>
-    <button id="fadeOutButton">Fade Out</button>
-    <button id="slideToggleButton">Slide Toggle</button>
+
+    <div id="element"></div>
+    <button id="animateButton">Анімувати</button>
+    <button id="clearQueueButton">Очистити чергу</button>
+    <button id="stopButton">Зупинити анімацію</button>
+    <p><a href="lab11.html"><- Повернутися назад</a></p>
 
     <script>
         $(document).ready(function() {
-            // Метод .fadeIn()
-            $("#fadeInButton").click(function() {
-                $("#box").fadeIn(1000); // Застосовує анімацію з зникненням
+            // Анімація елемента
+            var animateElement = function() {
+                $("#element").animate({
+                    width: '200px',
+                    height: '200px',
+                    opacity: 0.5
+                }, 2000);
+            };
+
+            // Клік на кнопку "Анімувати"
+            $("#animateButton").click(function() {
+                animateElement();
             });
 
-            // Метод .fadeOut()
-            $("#fadeOutButton").click(function() {
-                $("#box").fadeOut(1000); // Застосовує анімацію з зникненням
+            // Клік на кнопку "Очистити чергу"
+            $("#clearQueueButton").click(function() {
+                $("#element").clearQueue();
             });
 
-            // Метод .slideToggle()
-            var isVisible = true;
-            $("#slideToggleButton").click(function() {
-                $("#box").slideToggle(1000); // Застосовує анімацію з відмиканням або закриттям
-                isVisible = !isVisible;
-                if (isVisible) {
-                    $(this).text("Slide Up");
-                } else {
-                    $(this).text("Slide Down");
-                }
+            // Клік на кнопку "Зупинити анімацію"
+            $("#stopButton").click(function() {
+                $("#element").stop();
             });
         });
     </script>
-    <p><a href="lab11.html"><- Повернутися назад</a></p>
+
 </body>
 </html>

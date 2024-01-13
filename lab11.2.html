@@ -1,37 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Завдання 2</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>jQuery Methods Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #myDiv {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+      margin: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div id="originalDiv">Початковий текст </div>
-    <div id="cloneDiv"> </div>
-    <div id="widthDiv">Ширина: 100 пікселів</div>
-    <div id="outerWidthDiv" style="width: 200px; padding: 10px; border: 1px solid black;">Зовнішня ширина</div>
 
-    <script>
-        $(document).ready(function() {
-            // Завдання 2 - Методи .append(), .clone(), .width(функція), .outerWidth()
-            
-            // Додати текст до div
-            $("#originalDiv").append(" Додатковий текст");
+  <div id="myDiv">Це блок з текстом</div>
+  
+  <button id="returnButton">Повернутися</button>
 
-            // Створити копію div і додати її до cloneDiv
-            var original = $("#originalDiv");
-            var cloned = original.clone();
-            $("#cloneDiv").append(cloned);
+  <script>
+    $(document).ready(function(){
 
-            // Встановити ширину div на 100 пікселів
-            $("#widthDiv").width(function(index, currentWidth) {
-                return currentWidth + 100;
-            });
+      // .html()
+      var newContent = "<p>Привіт, Інтернет!</p>";
+      $("#myDiv").html(newContent);
 
-            // Отримати зовнішню ширину
-            var outerWidth = $("#outerWidthDiv").outerWidth();
-            alert("Зовнішня ширина div: " + outerWidth + " пікселів");
-        });
-    </script>
-    <p><a href="lab11.html"><- Повернутися назад</a></p>
+      // .css()
+      $("#myDiv").css({
+        "color": "blue",
+        "font-size": "20px"
+      });
+
+      // .val()
+      var inputValue = $("#myInput").val();
+      alert("Введений текст: " + inputValue);
+
+      // .attr()
+      $("#myImage").attr("src", "new-image.jpg");
+      $("#myImage").attr("alt", "Нове зображення");
+
+      // .removeAttr()
+      $("#myLink").removeAttr("href");
+
+      // .after()
+      $("#myDiv").after("<p>Це новий елемент, доданий після блоку</p>");
+
+      // .unwrap()
+      $("#myDiv").unwrap();
+
+      // .width(функція)
+      $("#myDiv").width(function(index, currentWidth){
+        // Збільшимо ширину блоку на 50px
+        return currentWidth + 50;
+      });
+
+      // .offset()
+      var offset = $("#myDiv").offset();
+      alert("Відступ по горизонталі: " + offset.left + "px, Відступ по вертикалі: " + offset.top + "px");
+
+      // Повернення на lab11 при натисканні кнопки "Повернутися"
+      $("#returnButton").click(function(){
+        window.location.href = "lab11.html";
+      });
+
+    });
+  </script>
+
 </body>
 </html>

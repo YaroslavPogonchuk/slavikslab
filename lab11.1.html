@@ -1,52 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Завдання 1</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>jQuery Methods Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
-    <div id="myDiv">Початковий текст</div>
-    <br>
 
-    <input type="text" id="myInput" value="Початкове значення">
-    <br>
+  <div id="myDiv">Це таблиця</div>
+  <input type="text" id="myInput" placeholder="Введіть текст">
+  
+  <button id="changeTableButton">Змінити таблицю</button>
+  <button id="returnButton">Повернутися</button>
 
-    <a href="https://www.example.com" id="myLink">Посилання</a>
+  <script>
+    $(document).ready(function(){
 
-    <script>
-        $(document).ready(function() {
-            // Змінити HTML вміст елементу
-            $("#myDiv").html("Новий текст");
-            
-            // Отримати HTML вміст елементу
-            var content = $("#myDiv").html();
-            alert(content);
+      // .html()
+      var newContent = "<p>Привіт, Інтернет!</p>";
+      $("#myDiv").html(newContent);
 
-            // Змінити CSS властивість кольору тексту
-            $("#myDiv").css("color", "red");
-            
-            // Отримати значення CSS властивості кольору тексту
-            var color = $("#myDiv").css("color");
-            alert("Колір тексту: " + color);
+      // .css()
+      $("#myDiv").css({
+        "color": "blue",
+        "font-size": "20px"
+      });
 
-            // Змінити значення введення форми
-            $("#myInput").val("Нове значення");
-            
-            // Отримати значення введення форми
-            var value = $("#myInput").val();
-            alert("Значення введення: " + value);
+      // .val()
+      var inputValue = $("#myInput").val();
+      alert("Введений текст: " + inputValue);
 
-            // Змінити значення атрибуту href посилання
-            $("#myLink").attr("href", "https://www.newlink.com");
-            
-            // Отримати значення атрибуту href посилання
-            var link = $("#myLink").attr("href");
-            alert("Посилання: " + link);
+      // Зміна таблиці при натисканні кнопки "Змінити таблицю"
+      $("#changeTableButton").click(function(){
+        // Додамо новий рядок в таблицю
+        var newRow = "<tr><td>New Data 1</td><td>New Data 2</td></tr>";
+        $("table").append(newRow);
 
-            // Видалити атрибут href посилання
-            $("#myLink").removeAttr("href");
-        });
-    </script>
-    <p><a href="lab11.html"><- Повернутися назад</a></p>
+        // Змінимо фоновий колір таблиці
+        $("table").css("background-color", "lightyellow");
+      });
+
+      // Повернення на lab11 при натисканні кнопки "Повернутися"
+      $("#returnButton").click(function(){
+        window.location.href = "lab11.html";
+      });
+
+    });
+  </script>
+
+  <table>
+    <tr>
+      <th>Заголовок 1</th>
+      <th>Заголовок 2</th>
+    </tr>
+    <tr>
+      <td>Дані 1</td>
+      <td>Дані 2</td>
+    </tr>
+  </table>
+
 </body>
 </html>

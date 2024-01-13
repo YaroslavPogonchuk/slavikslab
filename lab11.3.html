@@ -1,58 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Завдання 3</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>jQuery Methods Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    button {
+      margin: 5px;
+    }
+    div {
+      width: 150px;
+      height: 50px;
+      background-color: lightblue;
+      margin: 20px;
+    }
+  </style>
 </head>
 <body>
-    <button id="addButton">.add()</button>
-    <button id="hasButton">.has()</button>
-    <button id="parentsButton">.parents()</button>
-    <button id="closestButton">.closest()</button>
-    <button id="mapButton">.map()</button>
 
-    <div id="container">
-        <div class="parent">
-            <div class="child">Child 1</div>
-            <div class="child">Child 2</div>
-        </div>
-    </div>
+  <button id="endButton">.end()</button>
+  <button id="nextUntilButton">.nextUntil()</button>
+  <button id="sliceButton">.slice()</button>
+  <button id="firstButton">.first()</button>
+  <button id="parentButton">.parent()</button>
 
-    <script>
-        $(document).ready(function() {
-            $("#addButton").click(function() {
-                // Виконання методу .add()
-                var addedElement = $("<p>Доданий елемент</p>");
-                $("#container").add(addedElement).appendTo("#container");
-            });
+  <div>Елемент 1</div>
+  <div>Елемент 2</div>
+  <div>Елемент 3</div>
+  <div>Елемент 4</div>
+  
+  <button id="returnButton">Повернутися</button>
 
-            $("#hasButton").click(function() {
-                // Виконання методу .has()
-                var hasChildren = $(".parent").has(".child");
-                alert("Чи є у .parent діти? " + hasChildren.length);
-            });
+  <script>
+    $(document).ready(function(){
 
-            $("#parentsButton").click(function() {
-                // Виконання методу .parents()
-                var parents = $(".child").parents(".parent");
-                alert("Батьківські елементи .child: " + parents.length);
-            });
+      // .end()
+      $("#endButton").click(function(){
+        $("div").css("color", "red").end().css("border", "2px solid green");
+      });
 
-            $("#closestButton").click(function() {
-                // Виконання методу .closest()
-                var closestParent = $(".child").closest(".parent");
-                alert("Найближчий батьківський елемент .parent: " + closestParent.length);
-            });
+      // .nextUntil()
+      $("#nextUntilButton").click(function(){
+        $("div").eq(1).nextUntil("div").css("background-color", "yellow");
+      });
 
-            $("#mapButton").click(function() {
-                // Виконання методу .map()
-                var textArray = $(".child").map(function() {
-                    return $(this).text();
-                }).get();
-                alert("Тексти дітей: " + textArray.join(", "));
-            });
-        });
-    </script>
-    <p><a href="lab11.html"><- Повернутися назад</a></p>
+      // .slice()
+      $("#sliceButton").click(function(){
+        $("div").slice(1, 3).css("font-weight", "bold");
+      });
+
+      // .first()
+      $("#firstButton").click(function(){
+        $("div").first().css("background-color", "orange");
+      });
+
+      // .parent()
+      $("#parentButton").click(function(){
+        $("div").parent().css("border", "1px dashed blue");
+      });
+
+      // Повернення на lab11 при натисканні кнопки "Повернутися"
+      $("#returnButton").click(function(){
+        window.location.href = "lab11.html";
+      });
+
+    });
+  </script>
+
 </body>
 </html>
