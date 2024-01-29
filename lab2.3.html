@@ -11,8 +11,10 @@ function fun() {
     for (let i = 1; i <= str; i++) {
         res_str += "<tr>\n";
         for (let j = 1; j <= stb; j++) {
+            const value = -5 * j + 3 * i;
+            
             res_str += "<td>";
-            res_str += "<input type=\"text\" id=\"_" + i + "_" + j + "\" value=\"" + i + "" + j + "\">";
+            res_str += "<input type=\"text\" id=\"_" + i + "_" + j + "\" value=\"" + value + "\">";
             res_str += "<\/td>\n";
         }
         res_str += "<\/tr>\n";
@@ -27,10 +29,10 @@ function fun_build() {
     for (let i = 1; i <= str; i++) {
         let sum = 0;
         for (let j = 1; j <= stb; j++) {
-            res_str = "sum += parseInt(main_form._" + i + "_" + j + ".value);";
-            eval(res_str);
+            const value = parseInt(main_form["_" + i + "_" + j].value);
+            sum += value;
         }
-        str_report += "Сума " + i + " строки = " + sum + ";\n"
+        str_report += "Сума " + i + " строки = " + sum + ";\n";
     }
     alert(str_report);
 }
@@ -41,20 +43,21 @@ function fun_build() {
     <table>
         <tr>
             <td>Кількість строк</td>
-            <td> <input type="text" id="t_str" value="5"></td>
+            <td><input type="text" id="t_str" value="5"></td>
         </tr>
         <tr>
-            <td> Кількість стовбців</td>
+            <td>Кількість стовбців</td>
             <td><input type="text" id="t_stb" value="5"></td>
         </tr>
         <tr>
-            <td> <input type="button" onClick="fun();" value="Побудувати матрицю"><br> <td>
+            <td><input type="button" onClick="fun();" value="Побудувати матрицю"></td>
         </tr>
         <tr>
-            <td> <input type="button" onClick="fun_build();" value="Розрахувати"> <td>
+            <td><input type="button" onClick="fun_build();" value="Розрахувати"></td>
         </tr>
     </table>
     <div id="main_div"></div>
 </form>
 </body>
 </html>
+
